@@ -1,5 +1,6 @@
 package sortAlgorithms;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 
@@ -8,5 +9,5 @@ import java.util.Optional;
  */
 public interface Sort {
 
-    public abstract  int[] sort(int[] arr, Optional<Integer> left, Optional<Integer> right);
+    ArrayList<Integer> sort(ArrayList<Integer> arr, Optional<Integer> left, Optional<Integer> right);
 }

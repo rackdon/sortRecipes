@@ -1,5 +1,7 @@
+import sortAlgorithms.MergesortImpl;
 import sortAlgorithms.QuicksortImpl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -8,11 +10,13 @@ import java.util.Optional;
  */
 public class Main {
     public static void main(String[] args) {
+        MergesortImpl mergesort = new MergesortImpl();
         QuicksortImpl quicksort = new QuicksortImpl();
-        int[] array = {65, 72, 23, 36, 99, 20, 11, 44};
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(65, 72, 23, 36, 99, 20, 11, 44));
         System.out.println("Initial Array");
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array.toArray()));
         System.out.println("Final Array");
-        System.out.println(Arrays.toString(quicksort.sort(array, Optional.of(0), Optional.of(array.length - 1))));
+        System.out.println(Arrays.toString(mergesort.sort(array, Optional.empty(), Optional.empty()).toArray()));
+//        System.out.println(Arrays.toString(quicksort.sort(array, Optional.of(0), Optional.of(array.size() - 1)).toArray()));
     }
 }

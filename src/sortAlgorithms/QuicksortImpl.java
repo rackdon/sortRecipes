@@ -1,5 +1,7 @@
 package sortAlgorithms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Optional;
 public class QuicksortImpl implements Sort {
 
     @Override
-    public int[] sort(int[] arr, Optional<Integer> left, Optional<Integer> right) {
+    public ArrayList<Integer> sort(ArrayList<Integer> arr, Optional<Integer> left, Optional<Integer> right) {
         if (left.get() < right.get()) {
             int p = partition(arr, left.get(), right.get());
             sort(arr, left, Optional.of(p));
@@ -17,15 +19,15 @@ public class QuicksortImpl implements Sort {
         return arr;
     }
 
-    private int partition(int[] arr, int left, int right) {
+    private int partition(ArrayList<Integer> arr, int left, int right) {
         int pivotPosition = getMedianOfThree(arr, left, right);
         int i = left;
         int j = right;
         while (i < j) {
-            while (arr[i] < arr[pivotPosition]) {
+            while (arr.get(i) < arr.get(pivotPosition)) {
                 i++;
             }
-            while (arr[j] > arr[pivotPosition]) {
+            while (arr.get(j) > arr.get(pivotPosition)) {
                 j--;
             }
             if (i < j) {
@@ -35,23 +37,21 @@ public class QuicksortImpl implements Sort {
         return pivotPosition;
     }
 
-    private int getMedianOfThree(int[] arr, int left, int right) {
+    private int getMedianOfThree(ArrayList<Integer> arr, int left, int right) {
         int mid = (left + right) / 2;
-        if (arr[right] < arr[left]) {
+        if (arr.get(right) < arr.get(left)) {
             swap(arr, left, right);
         }
-        if (arr[mid] < arr[left]) {
+        if (arr.get(mid) < arr.get(left)) {
             swap(arr, mid, left);
         }
-        if (arr[right] < arr[mid]) {
+        if (arr.get(right) < arr.get(mid)) {
             swap(arr, right, mid);
         }
         return mid;
     }
 
-    private void swap(int[] arr, int left, int right) {
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
+    private void swap(ArrayList<Integer> arr, int left, int right) {
+        Collections.swap(arr, left, right);
     }
 }
